@@ -10,6 +10,12 @@
     <height>810</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>第五人格bp界面</string>
   </property>
@@ -317,7 +323,7 @@
      <family>华康POP</family>
      <pointsize>25</pointsize>
     </font>
-    </property>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(240, 240, 240);</string>
    </property>
@@ -342,7 +348,7 @@
      <family>华康POP</family>
      <pointsize>25</pointsize>
     </font>
-    </property>
+   </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(240, 240, 240);</string>
    </property>
