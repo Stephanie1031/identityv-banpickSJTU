@@ -1,15 +1,17 @@
-# bp system for FEG Identity V
+# bp system for Identity V
+import sys
 from PySide6.QtWidgets import QApplication, QCompleter
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
+import win32ui
 
 strlstMap = ['军工厂jgc', '红教堂hjt', '圣心医院sxyy', '湖景村hjc',
              '月亮河公园ylhgy', '里奥的回忆ladhy', '永眠镇ymz', '唐人街trj']
 dictMap = {'军工厂jgc': '军工厂', '红教堂hjt':'红教堂', '圣心医院sxyy':'圣心医院', '湖景村hjc':'湖景村',
              '月亮河公园ylhgy':'月亮河公园', '里奥的回忆ladhy':'里奥的回忆', '永眠镇ymz':'永眠镇', '唐人街trj':'唐人街'}
 strlstSur = ['病患bh', '慈善家csj', '大副df', '古董商gds', '调酒师tjs', '调香师txs',
-             '画家hj', '击球手jqs', '机械师jxs', '祭司js','教授js', '勘探员kty',
+             '画家hj', '击球手jqs', '机械师jxs', '祭司js','教授js','记者jz', '勘探员kty',
              '空军kj', '哭泣小丑kqxc', '昆虫学者kcxz', '律师ls', '盲女mn',
              '冒险家mxj', '魔术师mss', '牛仔nz', '前锋qf', '囚徒qt', '入殓师rls',
              '守墓人smr', '玩具商wjs', '舞女wn', '先知xz', '小女孩xnh',
@@ -17,7 +19,7 @@ strlstSur = ['病患bh', '慈善家csj', '大副df', '古董商gds', '调酒师t
              '佣兵yb', '邮差yc', '园丁yd', '杂技演员zjyy', '咒术师zss', '作曲家zqj']
 dictSurName = {'病患bh':'病患', '慈善家csj':'“慈善家”', '大副df':'大副', '古董商gds':'古董商', '调酒师tjs':'调酒师', '调香师txs':'调香师',
              '画家hj':'画家', '击球手jqs':'击球手', '机械师jxs':'机械师', '祭司js':'祭司',
-             '教授js':'教授', '勘探员kty':'勘探员',
+             '教授js':'教授', '勘探员kty':'勘探员','记者jz':'记者',
              '空军kj':'空军', '哭泣小丑kqxc':'哭泣小丑', '昆虫学者kcxz':'昆虫学者', '律师ls':'律师', '盲女mn':'盲女',
              '冒险家mxj':'冒险家', '魔术师mss':'魔术师', '牛仔nz':'牛仔', '前锋qf':'前锋', '囚徒qt':'“囚徒”', '入殓师rls':'入殓师',
              '守墓人smr':'守墓人', '玩具商wjs':'玩具商', '舞女wn':'舞女', '先知xz':'先知', '小女孩xnh':'“小女孩”',
@@ -152,6 +154,62 @@ class claWinFg:
         self.ui.labMapPic.setPixmap(pix)
         self.ui.labMap.setText(dictMap[ss] if ss in strlstMap else '')
 
+class claPoint:
+    def __init__(self):
+        self.ui = QUiLoader().load('./ui/WinPoint.ui')
+        pix = QPixmap('./pic/pointbg.png')
+        pix = pix.scaled(self.ui.bg.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.bg.setPixmap(pix)
+        self.ui.title.setStyleSheet("color:#b63c27;background:white")
+        self.ui.wdl1.setStyleSheet("color:#7f161d;")
+        self.ui.wdl2.setStyleSheet("color:#7f161d;")
+        self.ui.label_3.setStyleSheet("color:#a87a28;")
+        self.ui.g1.setStyleSheet("color:#0000cc;")
+        self.ui.g2.setStyleSheet("color:#0000cc;")
+        self.ui.g3.setStyleSheet("color:#0000cc;")
+        self.ui.g4.setStyleSheet("color:#0000cc;")
+        self.ui.g5.setStyleSheet("color:#0000cc;")
+
+    def updateT1id(self,name):
+        self.ui.t1_name.setText(name)
+
+    def updateT2id(self,name):
+        self.ui.t2_name.setText(name)
+        
+    def updateteam1(self,file1):
+        pix = QPixmap()
+        pix.load(file1)
+        pix = pix.scaled(self.ui.team1pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.team1pic.setPixmap(pix)
+
+    def updateteam2(self,file2):
+        pix = QPixmap()
+        pix.load(file2)
+        pix = pix.scaled(self.ui.team2pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.team2pic.setPixmap(pix)
+    
+    def switchBO3(self, mode):
+        if mode == 3:
+            self.ui.label_4.setEnabled(False)
+            self.ui.label_5.setEnabled(False)
+            self.ui.g4.setEnabled(False)
+            self.ui.g5.setEnabled(False)
+            self.ui.g4.setStyleSheet("color:#787878;")
+            self.ui.g5.setStyleSheet("color:#787878;")
+        else:
+            self.ui.label_4.setEnabled(True)
+            self.ui.label_5.setEnabled(True)
+            self.ui.g4.setEnabled(True)
+            self.ui.g5.setEnabled(True)
+    
+    def updatePoint(self,point):
+        self.ui.g1.setText(str((point[0])[0]) + "  :  " + str((point[0])[1]))
+        self.ui.g2.setText(str((point[1])[0]) + "  :  " + str((point[1])[1]))
+        self.ui.g3.setText(str((point[2])[0]) + "  :  " + str((point[2])[1]))
+        self.ui.g4.setText(str((point[3])[0]) + "  :  " + str((point[3])[1]))
+        self.ui.g5.setText(str((point[4])[0]) + "  :  " + str((point[4])[1]))
+        self.ui.wdl1.setText("W" + str(((point[5])[0])) + " D" + str(((point[5])[1])) + " L" + str(((point[5])[2])))
+        self.ui.wdl2.setText("W" + str(((point[6])[0])) + " D" + str(((point[6])[1])) + " L" + str(((point[6])[2])))
 
 class claWinBg:
     def __init__(self):
@@ -270,7 +328,119 @@ class claWinBg:
         # 生成bp界面
         self.ui.pBtnGen.clicked.connect(self.genFg)
 
+        # 新功能：比分页面
+        self.ui.pointGen.clicked.connect(self.genPoint)
+        
+        self.count = 0
+        self.inputfile1 = ''
+        self.inputfile2 = ''
+
+        # 队名与队徽输入
+        self.ui.lEdtSur.textChanged.connect(self.team1id)
+        self.ui.lEdtHun.textChanged.connect(self.team2id)
+        self.ui.team1logo.clicked.connect(self.team1pic)
+        self.ui.team2logo.clicked.connect(self.team2pic)
+
+        # 切换本局
+        self.ui.previous.clicked.connect(self.pre)
+        self.ui.next.clicked.connect(self.nex)
+
+    def team1id(self):
+        self.ui.team1.setText(self.ui.lEdtSur.text())
+
+    def team2id(self):
+        self.ui.team2.setText(self.ui.lEdtHun.text())
+        if self.count:
+            self.ui.team1.setText(self.ui.lEdtHun.text())
+            self.ui.team2.setText(self.ui.lEdtSur.text())
+
+    def team1pic(self):
+        #导入队伍一logo文件
+        dlg = win32ui.CreateFileDialog(1)
+        dlg.SetOFNInitialDir('C:/')
+        dlg.DoModal()
+        self.inputfile1 = dlg.GetPathName()
+        if self.inputfile1=='':
+            return
+        else:
+            self.winPoint = claPoint()
+            self.genPoint()
+            
+    def team2pic(self):
+        #导入队伍二logo文件
+        dlg = win32ui.CreateFileDialog(1)
+        dlg.SetOFNInitialDir('C:/')
+        dlg.DoModal()
+        self.inputfile2 = dlg.GetPathName()
+        if self.inputfile2=='':
+            return
+        else:
+            self.winPoint = claPoint()
+            self.genPoint()
+
+    def calPoint(self):
+        bo1 = [self.ui.b1_l_1.value()+self.ui.b1_l_2.value() , self.ui.b1_r_1.value()+self.ui.b1_r_2.value()]
+        bo2 = [self.ui.b2_l_1.value()+self.ui.b2_l_2.value() , self.ui.b2_r_1.value()+self.ui.b2_r_2.value()]
+        bo3 = [self.ui.b3_l_1.value()+self.ui.b3_l_2.value() , self.ui.b3_r_1.value()+self.ui.b3_r_2.value()]
+        bo4 = [self.ui.b4_l_1.value()+self.ui.b4_l_2.value() , self.ui.b4_r_1.value()+self.ui.b4_r_2.value()]
+        bo5 = [self.ui.b5_l_1.value()+self.ui.b5_l_2.value() , self.ui.b5_r_1.value()+self.ui.b5_r_2.value()]
+        pointsave = [[self.ui.b1_l_1.value() , self.ui.b1_r_1.value()],
+                     [self.ui.b1_l_2.value() , self.ui.b1_r_2.value()],
+                     [self.ui.b2_l_1.value() , self.ui.b2_r_1.value()],
+                     [self.ui.b2_l_2.value() , self.ui.b2_r_2.value()],
+                     [self.ui.b3_l_1.value() , self.ui.b3_r_1.value()],
+                     [self.ui.b3_l_2.value() , self.ui.b3_r_2.value()],
+                     [self.ui.b4_l_1.value() , self.ui.b4_r_1.value()],
+                     [self.ui.b4_l_2.value() , self.ui.b4_r_2.value()],
+                     [self.ui.b5_l_1.value() , self.ui.b5_r_1.value()],
+                     [self.ui.b5_l_2.value() , self.ui.b5_r_2.value()]]
+        wdl1 = [0,0,0]
+        wdl2 = [0,0,0]
+        for i in range (10):
+            if pointsave[i][0] > pointsave[i][1]:
+                wdl1[0]+=1
+                wdl2[2]+=1
+            elif pointsave[i][0] == pointsave[i][1] and pointsave[i][0] !=0 and pointsave[i][1] !=0:
+                wdl1[1]+=1
+                wdl2[1]+=1
+            elif pointsave[i][0] < pointsave[i][1]:
+                wdl1[2]+=1
+                wdl2[0]+=1
+        return[bo1,bo2,bo3,bo4,bo5,wdl1,wdl2]
+
+    def updateMode(self):
+        # BO3/5模式选择
+        if self.ui.mode3.isChecked():
+            mode = 3
+        elif self.ui.mode5.isChecked():
+            mode = 5
+        return mode
+
+    def pre(self):
+        curpage = self.ui.stackedWidget.currentIndex()
+        if curpage != 0:
+            self.ui.stackedWidget.setCurrentIndex(curpage - 1)
+        else:
+            if self.ui.mode3.isChecked():
+                self.ui.stackedWidget.setCurrentIndex(2)
+            if self.ui.mode5.isChecked():
+                self.ui.stackedWidget.setCurrentIndex(4)
+
+    def nex(self):
+        curpage = self.ui.stackedWidget.currentIndex()
+        if self.ui.mode3.isChecked():
+            if curpage == 2:
+                self.ui.stackedWidget.setCurrentIndex(0)
+            else:
+                self.ui.stackedWidget.setCurrentIndex(curpage + 1)
+        if self.ui.mode5.isChecked():
+            if curpage == 4:
+                self.ui.stackedWidget.setCurrentIndex(0)
+            else:
+                self.ui.stackedWidget.setCurrentIndex(curpage + 1)
+
     def swapTeam(self):
+        self.count = (self.count + 1) % 2
         temp = self.ui.lEdtSur.text()
         self.ui.lEdtSur.setText(self.ui.lEdtHun.text())
         self.ui.lEdtHun.setText(temp)
@@ -382,6 +552,68 @@ class claWinBg:
         self.ui.cBoxSurPick3.setCurrentText('')
         self.ui.cBoxSurPick4.setCurrentText('')
         self.ui.cBoxHunPick.setCurrentText('')
+        self.ui.team1.setText('')
+        self.ui.team2.setText('')
+        self.inputfile1=''
+        self.inputfile2=''
+        self.ui.b1_l_1.setValue('0')
+        self.ui.b1_r_1.setValue('0')
+        self.ui.b2_l_1.setValue('0')
+        self.ui.b2_r_1.setValue('0')
+        self.ui.b3_l_1.setValue('0')
+        self.ui.b3_r_1.setValue('0')
+        self.ui.b4_l_1.setValue('0')
+        self.ui.b4_r_1.setValue('0')
+        self.ui.b5_l_1.setValue('0')
+        self.ui.b5_r_1.setValue('0')
+        self.ui.b1_l_2.setValue('0')
+        self.ui.b1_r_2.setValue('0')
+        self.ui.b2_l_2.setValue('0')
+        self.ui.b2_r_2.setValue('0')
+        self.ui.b3_l_2.setValue('0')
+        self.ui.b3_r_2.setValue('0')
+        self.ui.b4_l_2.setValue('0')
+        self.ui.b4_r_2.setValue('0')
+        self.ui.b5_l_2.setValue('0')
+        self.ui.b5_r_2.setValue('0')
+
+    def genPoint(self):
+        self.winPoint = claPoint()
+        self.winPoint.updateteam1(self.inputfile1)
+        self.winPoint.updateteam2(self.inputfile2)
+        self.winPoint.updateT1id(self.ui.team1.text())
+        self.winPoint.updateT2id(self.ui.team2.text())
+        self.winPoint.ui.show()
+
+        # 更新比分窗口队名
+        self.ui.team1.textChanged.connect(self.winPoint.updateT1id)
+        self.ui.team2.textChanged.connect(self.winPoint.updateT2id)
+
+        #切换bo3/5
+        self.ui.mode3.toggled.connect(self.winPoint.switchBO3(self.updateMode()))
+        
+        # 各场次小分
+        self.ui.b1_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b1_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b2_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b2_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b3_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b3_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b4_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b4_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b5_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b5_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b1_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b1_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b2_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b2_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b3_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b3_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b4_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b4_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b5_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        self.ui.b5_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        
 
     def genFg(self):
         self.winFg = claWinFg()
@@ -436,7 +668,7 @@ class claWinBg:
         self.ui.cBoxHunPick.currentTextChanged.connect(self.winFg.updateHunPickPic)
 
 if __name__ == '__main__':
-    app = QApplication([])
+    app = QApplication(sys.argv)
     winBg = claWinBg()
     winBg.ui.show()
     app.exec()
