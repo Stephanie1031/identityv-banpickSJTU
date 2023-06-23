@@ -1,6 +1,6 @@
 <h1 align="center">第五人格比赛banpick画面</h1>
 
->利用Pyside6库写成的第五人格banpick可视化界面，原作者为FDU的Pise1don，来自SJTU的本人Stephanie进行了一些修改与调整~
+>利用Pyside6库写成的第五人格banpick可视化界面，原作者为FDU的Pise1don，来自SJTU的本人Stephanie进行了一些修改与调整~(联系方式：QQ 871612785, ~~（第五人格ID: 207040762）~~
 
 ## 简介
 
@@ -16,10 +16,10 @@ originalcode文件夹中包含了Python源代码，以及各种图片资源，�
 
 实际运行过程中会产生一个后台窗口及一个用于直播时展示的bp界面窗口。
 
-<p align='center'><img width="400" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/background.png"></p>
+<p align='center'><img width="600" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/background.png"></p>
 <h5 align="center">后台窗口</h5>
 
-<p align='center'><img width="400" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/bp-example.png"></p>
+<p align='center'><img width="600" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/bp-example.png"></p>
 <h5 align="center">bp界面演示</h5>
 
 后台窗口中所有的选项都可以通过拼音首字母进行快速筛选，当前代码版本更新至求生者角色“教授”，后续是否会维护尚且不知：P
@@ -57,12 +57,16 @@ originalcode文件夹中包含了Python源代码，以及各种图片资源，�
 
 输入各局比分后点击`“生成比分界面”按钮`，bp系统会根据当前模式和输赢情况显示到比分UI中。
 
-<p align='center'><img width="400" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/point-example.png"></p>
+<p align='center'><img width="600" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/point-example.png"></p>
 <h5 align="center">比分界面演示</h5>
 
 注：由于本人能力有限，当前版本仅支持选择比赛模式(bo3/bo5)并输入比分后进行手动按钮同步，还望后续有人能够完善此代码~
 
 ~~也许以后会小更新一个比赛中使用的比分悬浮窗？敬请期待！~~
+
+
+
+<h1 align="center">原作者代码说明</h1>
 #
 
 作者：Pise1don，复旦大学第五人格协会成员，QQ: 307958871 ~~，（第五人格ID: 60781755）~~
