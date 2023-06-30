@@ -384,26 +384,21 @@ class claWinBg:
         bo3 = [self.ui.b3_l_1.value()+self.ui.b3_l_2.value() , self.ui.b3_r_1.value()+self.ui.b3_r_2.value()]
         bo4 = [self.ui.b4_l_1.value()+self.ui.b4_l_2.value() , self.ui.b4_r_1.value()+self.ui.b4_r_2.value()]
         bo5 = [self.ui.b5_l_1.value()+self.ui.b5_l_2.value() , self.ui.b5_r_1.value()+self.ui.b5_r_2.value()]
-        pointsave = [[self.ui.b1_l_1.value() , self.ui.b1_r_1.value()],
-                     [self.ui.b1_l_2.value() , self.ui.b1_r_2.value()],
-                     [self.ui.b2_l_1.value() , self.ui.b2_r_1.value()],
-                     [self.ui.b2_l_2.value() , self.ui.b2_r_2.value()],
-                     [self.ui.b3_l_1.value() , self.ui.b3_r_1.value()],
-                     [self.ui.b3_l_2.value() , self.ui.b3_r_2.value()],
-                     [self.ui.b4_l_1.value() , self.ui.b4_r_1.value()],
-                     [self.ui.b4_l_2.value() , self.ui.b4_r_2.value()],
-                     [self.ui.b5_l_1.value() , self.ui.b5_r_1.value()],
-                     [self.ui.b5_l_2.value() , self.ui.b5_r_2.value()]]
+        boall = [bo1, bo2, bo3, bo4, bo5]
         wdl1 = [0,0,0]
         wdl2 = [0,0,0]
-        for i in range (10):
-            if pointsave[i][0] > pointsave[i][1]:
+        if self.ui.mode3.isChecked():
+            mode = 3
+        elif self.ui.mode5.isChecked():
+            mode = 5
+        for i in range (mode):
+            if boall[i][0] > boall[i][1]:
                 wdl1[0]+=1
                 wdl2[2]+=1
-            elif pointsave[i][0] == pointsave[i][1] and pointsave[i][0] !=0 and pointsave[i][1] !=0:
+            elif boall[i][0] == boall[i][1] and boall[i][0] !=0 and boall[i][1] !=0:
                 wdl1[1]+=1
                 wdl2[1]+=1
-            elif pointsave[i][0] < pointsave[i][1]:
+            elif boall[i][0] < boall[i][1]:
                 wdl1[2]+=1
                 wdl2[0]+=1
         return[bo1,bo2,bo3,bo4,bo5,wdl1,wdl2]
