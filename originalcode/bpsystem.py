@@ -81,6 +81,18 @@ class claWinFg:
         pix = pix.scaled(self.ui.labSurBan6Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan6Pic.setPixmap(pix)
 
+    def updateSurBan7Pic(self, ss):
+        pix = QPixmap()
+        pix.load('./pic/sur/' + ss + '.png')
+        pix = pix.scaled(self.ui.labSurBan7Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.labSurBan7Pic.setPixmap(pix)
+
+    def updateSurBan8Pic(self, ss):
+        pix = QPixmap()
+        pix.load('./pic/sur/' + ss + '.png')
+        pix = pix.scaled(self.ui.labSurBan8Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.labSurBan8Pic.setPixmap(pix)
+
     def updateHunBan1Pic(self, ss):
         pix = QPixmap()
         pix.load('./pic/hun/' + ss + '.png')
@@ -258,12 +270,18 @@ class claWinBg:
         self.compSurBan6.setFilterMode(Qt.MatchContains)
         self.ui.cBoxSurBan6.setCompleter(self.compSurBan6)
 
+        self.ui.cBoxSurBan7.addItems(['']+strlstSur)
+        self.compSurBan7 = QCompleter(strlstSur)
+        self.compSurBan7.setFilterMode(Qt.MatchContains)
+        self.ui.cBoxSurBan7.setCompleter(self.compSurBan7)
+        
         self.ui.cBoxSurBan1.currentTextChanged.connect(self.updateSurBan1Pic)
         self.ui.cBoxSurBan2.currentTextChanged.connect(self.updateSurBan2Pic)
         self.ui.cBoxSurBan3.currentTextChanged.connect(self.updateSurBan3Pic)
         self.ui.cBoxSurBan4.currentTextChanged.connect(self.updateSurBan4Pic)
         self.ui.cBoxSurBan5.currentTextChanged.connect(self.updateSurBan5Pic)
         self.ui.cBoxSurBan6.currentTextChanged.connect(self.updateSurBan6Pic)
+        self.ui.cBoxSurBan7.currentTextChanged.connect(self.updateSurBan7Pic)
 
         # ban监管者
         self.ui.cBoxHunBan1.addItems(['']+strlstHun)
@@ -330,7 +348,7 @@ class claWinBg:
 
         # 新功能：比分页面
         self.ui.pointGen.clicked.connect(self.genPoint)
-        
+
         self.count = 0
         self.inputfile1 = ''
         self.inputfile2 = ''
@@ -363,8 +381,10 @@ class claWinBg:
         if self.inputfile1=='':
             return
         else:
-            self.winPoint = claPoint()
-            self.genPoint()
+            pix = QPixmap()
+            pix.load(self.inputfile1)
+            pix = pix.scaled(self.ui.team1pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            self.ui.team1pic.setPixmap(pix)
             
     def team2pic(self):
         #导入队伍二logo文件
@@ -375,8 +395,10 @@ class claWinBg:
         if self.inputfile2=='':
             return
         else:
-            self.winPoint = claPoint()
-            self.genPoint()
+            pix = QPixmap()
+            pix.load(self.inputfile2)
+            pix = pix.scaled(self.ui.team2pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            self.ui.team2pic.setPixmap(pix)
 
     def calPoint(self):
         bo1 = [self.ui.b1_l_1.value()+self.ui.b1_l_2.value() , self.ui.b1_r_1.value()+self.ui.b1_r_2.value()]
@@ -476,6 +498,12 @@ class claWinBg:
         pix = pix.scaled(self.ui.labSurBan6Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan6Pic.setPixmap(pix)
 
+    def updateSurBan7Pic(self):
+        pix = QPixmap()
+        pix.load('./pic/sur/' + self.ui.cBoxSurBan7.currentText() + '.png')
+        pix = pix.scaled(self.ui.labSurBan7Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.labSurBan7Pic.setPixmap(pix)
+
     def updateHunBan1Pic(self):
         pix = QPixmap()
         pix.load('./pic/hun/' + self.ui.cBoxHunBan1.currentText() + '.png')
@@ -538,6 +566,7 @@ class claWinBg:
         self.ui.cBoxSurBan4.setCurrentText('')
         self.ui.cBoxSurBan5.setCurrentText('')
         self.ui.cBoxSurBan6.setCurrentText('')
+        self.ui.cBoxSurBan7.setCurrentText('')
         self.ui.cBoxHunBan1.setCurrentText('')
         self.ui.cBoxHunBan2.setCurrentText('')
         self.ui.cBoxHunBan3.setCurrentText('')
@@ -578,8 +607,7 @@ class claWinBg:
         self.winPoint.updateteam2(self.inputfile2)
         self.winPoint.updateT1id(self.ui.team1.text())
         self.winPoint.updateT2id(self.ui.team2.text())
-        self.winPoint.ui.show()
-
+        
         # 更新比分窗口队名
         self.ui.team1.textChanged.connect(self.winPoint.updateT1id)
         self.ui.team2.textChanged.connect(self.winPoint.updateT2id)
@@ -609,6 +637,7 @@ class claWinBg:
         self.ui.b5_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
         self.ui.b5_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
         
+        self.winPoint.ui.show()
 
     def genFg(self):
         self.winFg = claWinFg()
@@ -621,6 +650,8 @@ class claWinBg:
         self.winFg.updateSurBan4Pic(self.ui.cBoxSurBan4.currentText())
         self.winFg.updateSurBan5Pic(self.ui.cBoxSurBan5.currentText())
         self.winFg.updateSurBan6Pic(self.ui.cBoxSurBan6.currentText())
+        self.winFg.updateSurBan7Pic(self.ui.cBoxSurBan7.currentText())
+        #self.winFg.updateSurBan8Pic(self.ui.cBoxSurBan8.currentText())
         self.winFg.updateHunBan1Pic(self.ui.cBoxHunBan1.currentText())
         self.winFg.updateHunBan2Pic(self.ui.cBoxHunBan2.currentText())
         self.winFg.updateHunBan3Pic(self.ui.cBoxHunBan3.currentText())
@@ -646,6 +677,8 @@ class claWinBg:
         self.ui.cBoxSurBan4.currentTextChanged.connect(self.winFg.updateSurBan4Pic)
         self.ui.cBoxSurBan5.currentTextChanged.connect(self.winFg.updateSurBan5Pic)
         self.ui.cBoxSurBan6.currentTextChanged.connect(self.winFg.updateSurBan6Pic)
+        self.ui.cBoxSurBan7.currentTextChanged.connect(self.winFg.updateSurBan7Pic)
+        #self.ui.cBoxSurBan8.currentTextChanged.connect(self.winFg.updateSurBan8Pic)
 
         # ban监管者
         self.ui.cBoxHunBan1.currentTextChanged.connect(self.winFg.updateHunBan1Pic)

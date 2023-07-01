@@ -96,9 +96,9 @@
    <property name="geometry">
     <rect>
      <x>993</x>
-     <y>160</y>
-     <width>381</width>
-     <height>451</height>
+     <y>180</y>
+     <width>351</width>
+     <height>351</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -114,8 +114,8 @@
   <widget class="QLabel" name="labHunBan1Pic">
    <property name="geometry">
     <rect>
-     <x>149</x>
-     <y>129</y>
+     <x>160</x>
+     <y>130</y>
      <width>91</width>
      <height>91</height>
     </rect>
@@ -136,8 +136,8 @@
   <widget class="QLabel" name="labHunBan2Pic">
    <property name="geometry">
     <rect>
-     <x>286</x>
-     <y>129</y>
+     <x>330</x>
+     <y>130</y>
      <width>91</width>
      <height>91</height>
     </rect>
@@ -158,7 +158,7 @@
   <widget class="QLabel" name="labHunBan3Pic">
    <property name="geometry">
     <rect>
-     <x>423</x>
+     <x>500</x>
      <y>130</y>
      <width>91</width>
      <height>91</height>
@@ -180,8 +180,8 @@
   <widget class="QLabel" name="labHunBan4Pic">
    <property name="geometry">
     <rect>
-     <x>559</x>
-     <y>131</y>
+     <x>680</x>
+     <y>130</y>
      <width>91</width>
      <height>91</height>
     </rect>
@@ -221,7 +221,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labSurBan2Pic">
+  <widget class="QLabel" name="labSurBan5Pic">
    <property name="geometry">
     <rect>
      <x>974</x>
@@ -243,7 +243,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labSurBan3Pic">
+  <widget class="QLabel" name="labSurBan6Pic">
    <property name="geometry">
     <rect>
      <x>1090</x>
@@ -265,7 +265,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labSurBan4Pic">
+  <widget class="QLabel" name="labSurBan7Pic">
    <property name="geometry">
     <rect>
      <x>1203</x>
@@ -287,7 +287,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labSurBan5Pic">
+  <widget class="QLabel" name="labSurBan8Pic">
    <property name="geometry">
     <rect>
      <x>1317</x>
@@ -362,9 +362,9 @@
   <widget class="QLabel" name="labSurPick1">
    <property name="geometry">
     <rect>
-     <x>115</x>
+     <x>125</x>
      <y>399</y>
-     <width>211</width>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
@@ -384,9 +384,9 @@
   <widget class="QLabel" name="labSurPick2">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>480</x>
      <y>402</y>
-     <width>211</width>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
@@ -406,9 +406,9 @@
   <widget class="QLabel" name="labSurPick3">
    <property name="geometry">
     <rect>
-     <x>111</x>
-     <y>616</y>
-     <width>211</width>
+     <x>120</x>
+     <y>620</y>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
@@ -428,9 +428,9 @@
   <widget class="QLabel" name="labSurPick4">
    <property name="geometry">
     <rect>
-     <x>469</x>
-     <y>616</y>
-     <width>211</width>
+     <x>470</x>
+     <y>620</y>
+     <width>201</width>
      <height>41</height>
     </rect>
    </property>
@@ -450,8 +450,8 @@
   <widget class="QLabel" name="labHunPick">
    <property name="geometry">
     <rect>
-     <x>1098</x>
-     <y>636</y>
+     <x>1090</x>
+     <y>550</y>
      <width>171</width>
      <height>41</height>
     </rect>
@@ -482,10 +482,10 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../pic/bg_FEG.png</pixmap>
+    <pixmap>../pic/background.png</pixmap>
    </property>
   </widget>
-  <widget class="QLabel" name="labSurBan6Pic">
+  <widget class="QLabel" name="labSurBan4Pic">
    <property name="geometry">
     <rect>
      <x>1315</x>
@@ -548,6 +548,114 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="labSurBan2Pic">
+   <property name="geometry">
+    <rect>
+     <x>1090</x>
+     <y>600</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labSurBan3Pic">
+   <property name="geometry">
+    <rect>
+     <x>1200</x>
+     <y>600</y>
+     <width>81</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>130</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>./pic/ban.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>130</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>./pic/ban.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>130</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>./pic/ban.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>130</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>./pic/ban.png</pixmap>
+   </property>
+  </widget>
   <zorder>labBg</zorder>
   <zorder>labSurPick1Pic</zorder>
   <zorder>labSurPick2Pic</zorder>
@@ -557,10 +665,10 @@
   <zorder>labHunBan2Pic</zorder>
   <zorder>labHunBan3Pic</zorder>
   <zorder>labSurBan1Pic</zorder>
-  <zorder>labSurBan2Pic</zorder>
-  <zorder>labSurBan3Pic</zorder>
-  <zorder>labSurBan4Pic</zorder>
   <zorder>labSurBan5Pic</zorder>
+  <zorder>labSurBan6Pic</zorder>
+  <zorder>labSurBan7Pic</zorder>
+  <zorder>labSurBan8Pic</zorder>
   <zorder>labSurTeam</zorder>
   <zorder>labHunTeam</zorder>
   <zorder>labSurPick1</zorder>
@@ -568,11 +676,17 @@
   <zorder>labSurPick3</zorder>
   <zorder>labSurPick4</zorder>
   <zorder>labHunPick</zorder>
-  <zorder>labSurBan6Pic</zorder>
+  <zorder>labSurBan4Pic</zorder>
   <zorder>labMapPic</zorder>
   <zorder>labHunBan4Pic</zorder>
   <zorder>labMap</zorder>
   <zorder>labHunPickPic</zorder>
+  <zorder>labSurBan2Pic</zorder>
+  <zorder>labSurBan3Pic</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
  </widget>
  <resources/>
  <connections/>

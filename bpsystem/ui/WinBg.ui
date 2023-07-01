@@ -22,7 +22,7 @@
      <x>30</x>
      <y>20</y>
      <width>521</width>
-     <height>91</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
@@ -103,7 +103,7 @@
       <x>80</x>
       <y>40</y>
       <width>113</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
    </widget>
@@ -113,7 +113,7 @@
       <x>330</x>
       <y>40</y>
       <width>113</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
    </widget>
@@ -124,7 +124,7 @@
      <x>570</x>
      <y>20</y>
      <width>271</width>
-     <height>91</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
@@ -154,9 +154,9 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>130</y>
-     <width>511</width>
-     <height>171</height>
+     <y>110</y>
+     <width>381</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="font">
@@ -174,7 +174,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>50</y>
+      <y>40</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -187,7 +187,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>30</y>
+      <y>20</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -205,10 +205,10 @@
    <widget class="QLabel" name="labSurBan1Pic">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>30</x>
+      <y>70</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -219,7 +219,7 @@
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>30</y>
+      <y>20</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -238,7 +238,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>50</y>
+      <y>40</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -250,10 +250,10 @@
    <widget class="QLabel" name="labSurBan2Pic">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>109</x>
+      <y>70</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -264,7 +264,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>30</y>
+      <y>20</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -283,7 +283,7 @@
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>50</y>
+      <y>40</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -295,10 +295,10 @@
    <widget class="QLabel" name="labSurBan3Pic">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>189</x>
+      <y>70</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -309,7 +309,7 @@
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>30</y>
+      <y>20</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -328,7 +328,7 @@
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>50</y>
+      <y>40</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -340,10 +340,10 @@
    <widget class="QLabel" name="labSurBan4Pic">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>269</x>
+      <y>70</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -353,8 +353,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>30</y>
+      <x>30</x>
+      <y>130</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -372,8 +372,8 @@
    <widget class="QComboBox" name="cBoxSurBan5">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>50</y>
+      <x>20</x>
+      <y>150</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -385,10 +385,10 @@
    <widget class="QLabel" name="labSurBan5Pic">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>30</x>
+      <y>180</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -398,8 +398,8 @@
    <widget class="QComboBox" name="cBoxSurBan6">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>50</y>
+      <x>100</x>
+      <y>150</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -411,8 +411,8 @@
    <widget class="QLabel" name="label_17">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>30</y>
+      <x>110</x>
+      <y>130</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -430,10 +430,55 @@
    <widget class="QLabel" name="labSurBan6Pic">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>110</x>
+      <y>180</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_34">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>130</y>
+      <width>54</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ban7</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="buddy">
+     <cstring>cBoxSurBan6</cstring>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cBoxSurBan7">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>150</y>
+      <width>71</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="editable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labSurBan7Pic">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>180</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -444,10 +489,10 @@
   <widget class="QGroupBox" name="groupBox_4">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>130</y>
-     <width>391</width>
-     <height>171</height>
+     <x>430</x>
+     <y>110</y>
+     <width>181</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="font">
@@ -462,8 +507,8 @@
    <widget class="QComboBox" name="cBoxHunBan1">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>50</y>
+      <x>20</x>
+      <y>40</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -475,8 +520,8 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>30</y>
+      <x>30</x>
+      <y>20</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -494,10 +539,10 @@
    <widget class="QLabel" name="labHunBan1Pic">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>30</x>
+      <y>70</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -507,8 +552,8 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>30</y>
+      <x>110</x>
+      <y>20</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -526,8 +571,8 @@
    <widget class="QComboBox" name="cBoxHunBan2">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>50</y>
+      <x>100</x>
+      <y>40</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -539,10 +584,10 @@
    <widget class="QLabel" name="labHunBan2Pic">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>110</x>
+      <y>70</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -552,8 +597,8 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>30</y>
+      <x>30</x>
+      <y>130</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -571,8 +616,8 @@
    <widget class="QComboBox" name="cBoxHunBan3">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>50</y>
+      <x>20</x>
+      <y>150</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -584,10 +629,10 @@
    <widget class="QLabel" name="labHunBan3Pic">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>30</x>
+      <y>180</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -597,8 +642,8 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>30</y>
+      <x>110</x>
+      <y>130</y>
       <width>54</width>
       <height>16</height>
      </rect>
@@ -616,8 +661,8 @@
    <widget class="QComboBox" name="cBoxHunBan4">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>50</y>
+      <x>100</x>
+      <y>150</y>
       <width>71</width>
       <height>22</height>
      </rect>
@@ -629,10 +674,10 @@
    <widget class="QLabel" name="labHunBan4Pic">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>80</y>
-      <width>70</width>
-      <height>70</height>
+      <x>110</x>
+      <y>180</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -665,9 +710,9 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>320</y>
+     <y>370</y>
      <width>391</width>
-     <height>211</height>
+     <height>161</height>
     </rect>
    </property>
    <property name="font">
@@ -866,9 +911,9 @@
    <property name="geometry">
     <rect>
      <x>440</x>
-     <y>320</y>
-     <width>111</width>
-     <height>211</height>
+     <y>370</y>
+     <width>171</width>
+     <height>161</height>
     </rect>
    </property>
    <property name="font">
@@ -885,7 +930,7 @@
    <widget class="QComboBox" name="cBoxHunPick">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>50</x>
       <y>50</y>
       <width>71</width>
       <height>22</height>
@@ -898,7 +943,7 @@
    <widget class="QLabel" name="label_16">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>60</x>
       <y>30</y>
       <width>54</width>
       <height>16</height>
@@ -953,10 +998,10 @@
   <widget class="QGroupBox" name="groupBox_7">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>320</y>
-     <width>371</width>
-     <height>211</height>
+     <x>620</x>
+     <y>110</y>
+     <width>341</width>
+     <height>421</height>
     </rect>
    </property>
    <property name="font">
@@ -974,7 +1019,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>79</y>
+      <y>270</y>
       <width>171</width>
       <height>121</height>
      </rect>
@@ -1487,8 +1532,8 @@
    <widget class="QPushButton" name="next">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>170</y>
+      <x>210</x>
+      <y>300</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -1500,8 +1545,8 @@
    <widget class="QPushButton" name="previous">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>120</y>
+      <x>210</x>
+      <y>270</y>
       <width>75</width>
       <height>24</height>
      </rect>
@@ -1510,44 +1555,80 @@
      <string>上一局</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="mode3">
+   <widget class="QSplitter" name="splitter">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>90</y>
-      <width>56</width>
-      <height>16</height>
+      <x>30</x>
+      <y>230</y>
+      <width>261</width>
+      <height>21</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Segoe UI</family>
-      <pointsize>10</pointsize>
-      <weight>50</weight>
-      <bold>false</bold>
-     </font>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="label_35">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>模式选择：</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="mode3">
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>bo3</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="mode5">
+     <property name="text">
+      <string>bo5</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="team1pic">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>90</y>
+      <width>101</width>
+      <height>101</height>
+     </rect>
     </property>
     <property name="text">
-     <string>bo3</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
+     <string/>
     </property>
    </widget>
-   <widget class="QRadioButton" name="mode5">
+   <widget class="QLabel" name="team2pic">
     <property name="geometry">
      <rect>
-      <x>262</x>
+      <x>190</x>
       <y>90</y>
-      <width>59</width>
-      <height>16</height>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="text">
-     <string>bo5</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
+     <string/>
     </property>
    </widget>
   </widget>
