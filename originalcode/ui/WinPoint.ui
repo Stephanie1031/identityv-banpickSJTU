@@ -253,7 +253,7 @@
     </font>
    </property>
    <property name="text">
-    <string>SJTU第五人格校内赛</string>
+    <string>第五人格校内赛</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
