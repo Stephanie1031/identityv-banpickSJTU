@@ -1,153 +1,162 @@
 # bp system for Identity V
 import sys
+import os
 from PySide6.QtWidgets import QApplication, QCompleter
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
 import win32ui
 
-strlstMap = ['军工厂jgc', '红教堂hjt', '圣心医院sxyy', '湖景村hjc',
-             '月亮河公园ylhgy', '里奥的回忆ladhy', '永眠镇ymz', '唐人街trj']
-dictMap = {'军工厂jgc': '军工厂', '红教堂hjt':'红教堂', '圣心医院sxyy':'圣心医院', '湖景村hjc':'湖景村',
-             '月亮河公园ylhgy':'月亮河公园', '里奥的回忆ladhy':'里奥的回忆', '永眠镇ymz':'永眠镇', '唐人街trj':'唐人街'}
-strlstSur = ['病患bh', '慈善家csj', '大副df', '古董商gds', '调酒师tjs', '调香师txs',
-             '画家hj', '击球手jqs', '机械师jxs', '祭司js','教授js','记者jz', '勘探员kty',
-             '空军kj', '哭泣小丑kqxc', '昆虫学者kcxz', '律师ls', '盲女mn',
-             '冒险家mxj', '魔术师mss', '牛仔nz', '前锋qf', '囚徒qt', '入殓师rls',
-             '守墓人smr', '玩具商wjs', '舞女wn', '先知xz', '小女孩xnh',
-             '小说家xsj', '心理学家xlxj', '幸运儿xye', '野人yr', '医生ys',
-             '佣兵yb', '邮差yc', '园丁yd', '杂技演员zjyy', '咒术师zss', '作曲家zqj']
-dictSurName = {'病患bh':'病患', '慈善家csj':'“慈善家”', '大副df':'大副', '古董商gds':'古董商', '调酒师tjs':'调酒师', '调香师txs':'调香师',
-             '画家hj':'画家', '击球手jqs':'击球手', '机械师jxs':'机械师', '祭司js':'祭司',
-             '教授js':'教授', '勘探员kty':'勘探员','记者jz':'记者',
-             '空军kj':'空军', '哭泣小丑kqxc':'哭泣小丑', '昆虫学者kcxz':'昆虫学者', '律师ls':'律师', '盲女mn':'盲女',
-             '冒险家mxj':'冒险家', '魔术师mss':'魔术师', '牛仔nz':'牛仔', '前锋qf':'前锋', '囚徒qt':'“囚徒”', '入殓师rls':'入殓师',
-             '守墓人smr':'守墓人', '玩具商wjs':'玩具商', '舞女wn':'舞女', '先知xz':'先知', '小女孩xnh':'“小女孩”',
-             '小说家xsj':'小说家', '心理学家xlxj':'“心理学家”', '幸运儿xye':'幸运儿', '野人yr':'野人', '医生ys':'医生',
-             '佣兵yb':'佣兵', '邮差yc':'邮差', '园丁yd':'园丁', '杂技演员zjyy':'杂技演员','作曲家zqj':'作曲家', '咒术师zss':'咒术师'}
-strlstHun = ['26号守卫26hsw', '爱哭鬼akg', '博士bs', '厂长cz', '雕刻家dkj',
-             '噩梦em', '疯眼fy', '歌剧演员gjyy', '红蝶hd', '红夫人hfr', '黄衣之主hyzz',
-             '杰克jk','记录员jly', '蜡像师lxs', '鹿头lt', '梦之女巫mznw', '孽蜥nx',
-             '破轮pl', '摄影师sys', '使徒st', '宿伞之魂sszh','守夜人syr' ,'小丑xc',
-             '小提琴家xtqj', '渔女yn', '隐士ys', '蜘蛛zz']
-dictHunName = {'26号守卫26hsw':'26号守卫', '爱哭鬼akg':'爱哭鬼', '博士bs':'“博士”', '厂长cz':'厂长', '雕刻家dkj':'雕刻家',
-             '噩梦em':'“噩梦”', '疯眼fy':'疯眼', '歌剧演员gjyy':'歌剧演员', '红蝶hd':'红蝶', '红夫人hfr':'红夫人', '黄衣之主hyzz':'黄衣之主',
-             '杰克jk':'“杰克”','记录员jly':'记录员', '蜡像师lxs':'蜡像师', '鹿头lt':'鹿头', '梦之女巫mznw':'梦之女巫', '孽蜥nx':'孽蜥',
-             '破轮pl':'破轮', '摄影师sys':'摄影师', '使徒st':'“使徒”', '宿伞之魂sszh':'宿伞之魂','守夜人syr':'守夜人' ,'小丑xc':'小丑',
-             '小提琴家xtqj':'小提琴家', '渔女yn':'渔女', '隐士ys':'隐士', '蜘蛛zz':'蜘蛛'}
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+#from charalist import strlstHun, strlstMap, dictSurName, dictHunName, dictMap, strlstSur
+with open(resource_path('./charalist/map.txt'), 'r') as f:
+    content = f.readlines()
+strlstMap = []
+dictMap = {}
+for line in content:
+    key_value = line.strip().split(' : ')
+    strlstMap.append(key_value[0])
+    dictMap[key_value[0]] = key_value[1]
+
+with open(resource_path('./charalist/hun.txt'), 'r') as f:
+    content = f.readlines()
+strlstHun = []
+dictHunName = {}
+for line in content:
+    key_value = line.strip().split(' : ')
+    strlstHun.append(key_value[0])
+    dictHunName[key_value[0]] = key_value[1]
+
+with open(resource_path('./charalist/sur.txt'), 'r') as f:
+    content = f.readlines()
+strlstSur = []
+dictSurName = {}
+for line in content:
+    key_value = line.strip().split(' : ')
+    strlstSur.append(key_value[0])
+    dictSurName[key_value[0]] = key_value[1]
 
 class claWinFg:
     def __init__(self):
-        self.ui = QUiLoader().load('./ui/WinFg.ui')
+        self.ui = QUiLoader().load(resource_path('./ui/WinFg.ui'))
         self.ui.setMaximumSize(1440, 810)
         self.ui.setMinimumSize(1440, 810)
-        pix = QPixmap('./pic/background.png')
+        pix = QPixmap(resource_path('./pic/background.png'))
         pix = pix.scaled(self.ui.labBg.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labBg.setPixmap(pix)
 
     def updateSurBan1Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan1Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan1Pic.setPixmap(pix)
 
     def updateSurBan2Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan2Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan2Pic.setPixmap(pix)
 
     def updateSurBan3Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan3Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan3Pic.setPixmap(pix)
 
     def updateSurBan4Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan4Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan4Pic.setPixmap(pix)
 
     def updateSurBan5Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan5Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan5Pic.setPixmap(pix)
 
     def updateSurBan6Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan6Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan6Pic.setPixmap(pix)
 
     def updateSurBan7Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan7Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan7Pic.setPixmap(pix)
 
     def updateSurBan8Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurBan8Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan8Pic.setPixmap(pix)
 
     def updateHunBan1Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/hun/' + ss + '.png')
+        pix.load(resource_path('./pic/hun/' + ss + '.png'))
         pix = pix.scaled(self.ui.labHunBan1Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan1Pic.setPixmap(pix)
 
     def updateHunBan2Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/hun/' + ss + '.png')
+        pix.load(resource_path('./pic/hun/' + ss + '.png'))
         pix = pix.scaled(self.ui.labHunBan2Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan2Pic.setPixmap(pix)
 
     def updateHunBan3Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/hun/' + ss + '.png')
+        pix.load(resource_path('./pic/hun/' + ss + '.png'))
         pix = pix.scaled(self.ui.labHunBan3Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan3Pic.setPixmap(pix)
 
     def updateHunBan4Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/hun/' + ss + '.png')
+        pix.load(resource_path('./pic/hun/' + ss + '.png'))
         pix = pix.scaled(self.ui.labHunBan4Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan4Pic.setPixmap(pix)
 
     def updateSurPick1Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurPick1Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick1Pic.setPixmap(pix)
         self.ui.labSurPick1.setText(dictSurName[ss] if ss in strlstSur else '')
 
     def updateSurPick2Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurPick2Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick2Pic.setPixmap(pix)
         self.ui.labSurPick2.setText(dictSurName[ss] if ss in strlstSur else '')
 
     def updateSurPick3Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurPick3Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick3Pic.setPixmap(pix)
         self.ui.labSurPick3.setText(dictSurName[ss] if ss in strlstSur else '')
 
     def updateSurPick4Pic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/sur/' + ss + '.png')
+        pix.load(resource_path('./pic/sur/' + ss + '.png'))
         pix = pix.scaled(self.ui.labSurPick4Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick4Pic.setPixmap(pix)
         self.ui.labSurPick4.setText(dictSurName[ss] if ss in strlstSur else '')
 
     def updateHunPickPic(self, ss):
         pix = QPixmap()
-        pix.load('./pic/hunBig/' + ss + '.png')
+        pix.load(resource_path('./pic/hunBig/' + ss + '.png'))
         # pix = pix.scaledToWidth(self.ui.labHunPickPic.width(), Qt.SmoothTransformation)
         pix = pix.scaled(self.ui.labHunPickPic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunPickPic.setPixmap(pix)
@@ -161,15 +170,15 @@ class claWinFg:
 
     def updateMap(self, ss):
         pix = QPixmap()
-        pix.load('./pic/map/' + ss + '.png')
+        pix.load(resource_path('./pic/map/' + ss + '.png'))
         pix = pix.scaled(self.ui.labMapPic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labMapPic.setPixmap(pix)
         self.ui.labMap.setText(dictMap[ss] if ss in strlstMap else '')
 
 class claPoint:
     def __init__(self):
-        self.ui = QUiLoader().load('./ui/WinPoint.ui')
-        pix = QPixmap('./pic/pointbg.png')
+        self.ui = QUiLoader().load(resource_path('./ui/WinPoint.ui'))
+        pix = QPixmap(resource_path('./pic/pointbg.png'))
         pix = pix.scaled(self.ui.bg.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.bg.setPixmap(pix)
         self.ui.title.setStyleSheet("color:#b63c27;background:white")
@@ -225,7 +234,7 @@ class claPoint:
 
 class claWinBg:
     def __init__(self):
-        self.ui = QUiLoader().load('./ui/WinBg.ui')
+        self.ui = QUiLoader().load(resource_path('./ui/WinBg.ui'))
 
         # 交换队伍
         self.ui.pButSwapTeam.clicked.connect(self.swapTeam)
@@ -379,10 +388,13 @@ class claWinBg:
         dlg.DoModal()
         self.inputfile1 = dlg.GetPathName()
         if self.inputfile1=='':
-            return
+            pixblank = QPixmap()
+            pixblank.load(resource_path('./pic/blank.png'))
+            pixblank = pixblank.scaled(self.ui.team1pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            self.ui.team1pic.setPixmap(pixblank)
         else:
             pix = QPixmap()
-            pix.load(self.inputfile1)
+            pix.load(resource_path(self.inputfile1))
             pix = pix.scaled(self.ui.team1pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
             self.ui.team1pic.setPixmap(pix)
             
@@ -393,10 +405,13 @@ class claWinBg:
         dlg.DoModal()
         self.inputfile2 = dlg.GetPathName()
         if self.inputfile2=='':
-            return
+            pixblank = QPixmap()
+            pixblank.load(resource_path('./pic/blank.png'))
+            pixblank = pixblank.scaled(self.ui.team1pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            self.ui.team2pic.setPixmap(pixblank)
         else:
             pix = QPixmap()
-            pix.load(self.inputfile2)
+            pix.load(resource_path(self.inputfile2))
             pix = pix.scaled(self.ui.team2pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
             self.ui.team2pic.setPixmap(pix)
 
@@ -414,13 +429,13 @@ class claWinBg:
         elif self.ui.mode5.isChecked():
             mode = 5
         for i in range (mode):
-            if boall[i][0] > boall[i][1]:
+            if boall[i][0] > boall[i][1] and boall[i][0]+boall[i][1]>=8:
                 wdl1[0]+=1
                 wdl2[2]+=1
-            elif boall[i][0] == boall[i][1] and boall[i][0] !=0 and boall[i][1] !=0:
+            elif boall[i][0] == boall[i][1] and boall[i][0] !=0 and boall[i][1] !=0 and boall[i][0]+boall[i][1]>=8:
                 wdl1[1]+=1
                 wdl2[1]+=1
-            elif boall[i][0] < boall[i][1]:
+            elif boall[i][0] < boall[i][1] and boall[i][0]+boall[i][1]>=8:
                 wdl1[2]+=1
                 wdl2[0]+=1
         return[bo1,bo2,bo3,bo4,bo5,wdl1,wdl2]
@@ -464,97 +479,97 @@ class claWinBg:
 
     def updateSurBan1Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurBan1.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurBan1.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurBan1Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan1Pic.setPixmap(pix)
 
     def updateSurBan2Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurBan2.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurBan2.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurBan2Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan2Pic.setPixmap(pix)
 
     def updateSurBan3Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurBan3.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurBan3.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurBan3Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan3Pic.setPixmap(pix)
 
     def updateSurBan4Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurBan4.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurBan4.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurBan4Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan4Pic.setPixmap(pix)
 
     def updateSurBan5Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurBan5.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurBan5.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurBan5Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan5Pic.setPixmap(pix)
 
     def updateSurBan6Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurBan6.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurBan6.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurBan6Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan6Pic.setPixmap(pix)
 
     def updateSurBan7Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurBan7.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurBan7.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurBan7Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurBan7Pic.setPixmap(pix)
 
     def updateHunBan1Pic(self):
         pix = QPixmap()
-        pix.load('./pic/hun/' + self.ui.cBoxHunBan1.currentText() + '.png')
+        pix.load(resource_path('./pic/hun/' + self.ui.cBoxHunBan1.currentText() + '.png'))
         pix = pix.scaled(self.ui.labHunBan1Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan1Pic.setPixmap(pix)
 
     def updateHunBan2Pic(self):
         pix = QPixmap()
-        pix.load('./pic/hun/' + self.ui.cBoxHunBan2.currentText() + '.png')
+        pix.load(resource_path('./pic/hun/' + self.ui.cBoxHunBan2.currentText() + '.png'))
         pix = pix.scaled(self.ui.labHunBan2Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan2Pic.setPixmap(pix)
 
     def updateHunBan3Pic(self):
         pix = QPixmap()
-        pix.load('./pic/hun/' + self.ui.cBoxHunBan3.currentText() + '.png')
+        pix.load(resource_path('./pic/hun/' + self.ui.cBoxHunBan3.currentText() + '.png'))
         pix = pix.scaled(self.ui.labHunBan3Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan3Pic.setPixmap(pix)
 
     def updateHunBan4Pic(self):
         pix = QPixmap()
-        pix.load('./pic/hun/' + self.ui.cBoxHunBan4.currentText() + '.png')
+        pix.load(resource_path('./pic/hun/' + self.ui.cBoxHunBan4.currentText() + '.png'))
         pix = pix.scaled(self.ui.labHunBan4Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunBan4Pic.setPixmap(pix)
 
     def updateSurPick1Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurPick1.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurPick1.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurPick1Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick1Pic.setPixmap(pix)
 
     def updateSurPick2Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurPick2.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurPick2.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurPick2Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick2Pic.setPixmap(pix)
 
     def updateSurPick3Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurPick3.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurPick3.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurPick3Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick3Pic.setPixmap(pix)
 
     def updateSurPick4Pic(self):
         pix = QPixmap()
-        pix.load('./pic/sur/' + self.ui.cBoxSurPick4.currentText() + '.png')
+        pix.load(resource_path('./pic/sur/' + self.ui.cBoxSurPick4.currentText() + '.png'))
         pix = pix.scaled(self.ui.labSurPick4Pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labSurPick4Pic.setPixmap(pix)
 
     def updateHunPickPic(self):
         pix = QPixmap()
-        pix.load('./pic/hun/' + self.ui.cBoxHunPick.currentText() + '.png')
+        pix.load(resource_path('./pic/hun/' + self.ui.cBoxHunPick.currentText() + '.png'))
         pix = pix.scaled(self.ui.labHunPickPic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.labHunPickPic.setPixmap(pix)
 
@@ -695,8 +710,8 @@ class claWinBg:
         # pick 监管者
         self.ui.cBoxHunPick.currentTextChanged.connect(self.winFg.updateHunPickPic)
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    winBg = claWinBg()
-    winBg.ui.show()
-    app.exec()
+
+app = QApplication(sys.argv)
+winBg = claWinBg()
+winBg.ui.show()
+app.exec()

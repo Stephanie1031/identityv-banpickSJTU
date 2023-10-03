@@ -12,7 +12,7 @@
 
 originalcode文件夹中包含了Python源代码，以及各种图片资源，可根据自己的需要进行修改，从而满足不同游戏banpick的需求。
 
-## 使用方法
+## bp界面使用方式
 
 实际运行过程中会产生一个后台窗口及一个用于直播时展示的bp界面窗口。
 
@@ -22,7 +22,26 @@ originalcode文件夹中包含了Python源代码，以及各种图片资源，�
 <p align='center'><img width="600" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/bp-example.png"></p>
 <h5 align="center">bp界面演示</h5>
 
-后台窗口中所有的选项都可以通过拼音首字母进行快速筛选，当前代码版本更新至求生者角色“教授”，后续是否会维护尚且不知：P
+后台窗口中所有的选项都可以通过拼音首字母进行快速筛选。
+
+## 比分界面使用方式
+
+输入各局比分后点击`“生成比分界面”按钮`，bp系统会根据当前模式和输赢情况显示到比分UI中。
+
+<p align='center'><img width="600" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/point-example.png"></p>
+<h5 align="center">比分界面演示</h5>
+
+注：由于本人能力有限，当前版本仅支持选择比赛模式(bo3/bo5)并输入比分后进行手动按钮同步，还望后续有人能够完善此代码~
+
+## 用户自行加入新角色指南
+如有新角色加入，先打开bpsystem中的charalist文件夹，里面sur代表求生者，hun代表监管者，按照上面已有的格式写入新角色名字和拼音缩写。
+> 格式样例—— `守墓人smr : 守墓人`，注意冒号前后有空格
+
+然后点开pic文件夹，sur里面是求生者的头图，hun是监管者头图（用于ban位），hunBig里是监管者大图。
+
+以下是参考的图片网址：[头图获取网址](https://wiki.biligame.com/dwrg/%E8%A7%92%E8%89%B2)，[监管者大图获取网址](http://www.identityvgame.com/en/character/index.html?type=hunter)
+
+把新角色图片加入，重新启动exe即可。
 
 ///////////////////////////////分割线//////////////////////////////////
 
@@ -53,16 +72,18 @@ originalcode文件夹中包含了Python源代码，以及各种图片资源，�
 
 >更新加入**比分页面UI**，可以在原有后台程序中输入bo3/5各局比分并计算显示~
 
-## 比分界面使用方式
-
-输入各局比分后点击`“生成比分界面”按钮`，bp系统会根据当前模式和输赢情况显示到比分UI中。
-
-<p align='center'><img width="600" src="https://github.com/Stephanie1031/identityv-banpickSJTU/blob/main/point-example.png"></p>
-<h5 align="center">比分界面演示</h5>
-
-注：由于本人能力有限，当前版本仅支持选择比赛模式(bo3/bo5)并输入比分后进行手动按钮同步，还望后续有人能够完善此代码~
 
 ~~也许以后会小更新一个比赛中使用的比分悬浮窗？敬请期待！~~
+
+
+///////////////////////////////分割线//////////////////////////////////
+
+2023/10/3 更新
+> 加入了新求生——`飞行家`，`拉拉队员`
+
+> 更改代码逻辑，使得后续新求生者和新监管者的加入无需修改源文件代码
+
+> 在output文件夹中放入单文件exe，方便相互传输
 
 
 
