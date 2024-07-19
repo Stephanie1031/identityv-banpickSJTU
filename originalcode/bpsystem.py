@@ -181,10 +181,10 @@ class claPoint:
         pix = QPixmap(resource_path('./pic/pointbg.png'))
         pix = pix.scaled(self.ui.bg.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.ui.bg.setPixmap(pix)
-        self.ui.title.setStyleSheet("color:#b63c27;background:white")
+        #self.ui.title.setStyleSheet("color:#b63c27;background:white")
         self.ui.wdl1.setStyleSheet("color:#7f161d;")
         self.ui.wdl2.setStyleSheet("color:#7f161d;")
-        self.ui.label_3.setStyleSheet("color:#a87a28;")
+        #self.ui.label_3.setStyleSheet("color:#a87a28;")
         self.ui.g1.setStyleSheet("color:#0000cc;")
         self.ui.g2.setStyleSheet("color:#0000cc;")
         self.ui.g3.setStyleSheet("color:#0000cc;")
@@ -224,11 +224,19 @@ class claPoint:
             self.ui.g5.setEnabled(True)
     
     def updatePoint(self,point):
-        self.ui.g1.setText(str((point[0])[0]) + "  :  " + str((point[0])[1]))
-        self.ui.g2.setText(str((point[1])[0]) + "  :  " + str((point[1])[1]))
-        self.ui.g3.setText(str((point[2])[0]) + "  :  " + str((point[2])[1]))
-        self.ui.g4.setText(str((point[3])[0]) + "  :  " + str((point[3])[1]))
-        self.ui.g5.setText(str((point[4])[0]) + "  :  " + str((point[4])[1]))
+        text = [str((point[0])[0]) + "  :  " + str((point[0])[1]),
+                str((point[1])[0]) + "  :  " + str((point[1])[1]),
+                str((point[2])[0]) + "  :  " + str((point[2])[1]),
+                str((point[3])[0]) + "  :  " + str((point[3])[1]),
+                str((point[4])[0]) + "  :  " + str((point[4])[1])]
+        for i in range(5):
+            if text[i] == '0  :  0':
+                text[i] = '-  :  -'
+        self.ui.g1.setText(text[0])
+        self.ui.g2.setText(text[1])
+        self.ui.g3.setText(text[2])
+        self.ui.g4.setText(text[3])
+        self.ui.g5.setText(text[4])
         self.ui.wdl1.setText("W" + str(((point[5])[0])) + " D" + str(((point[5])[1])) + " L" + str(((point[5])[2])))
         self.ui.wdl2.setText("W" + str(((point[6])[0])) + " D" + str(((point[6])[1])) + " L" + str(((point[6])[2])))
 
@@ -361,16 +369,21 @@ class claWinBg:
         self.count = 0
         self.inputfile1 = ''
         self.inputfile2 = ''
+        self.box = [self.ui.b1_l_1,self.ui.b1_r_1,self.ui.b1_l_2,self.ui.b1_r_2,
+                    self.ui.b2_l_1,self.ui.b2_r_1,self.ui.b2_l_2,self.ui.b2_r_2,
+                    self.ui.b3_l_1,self.ui.b3_r_1,self.ui.b3_l_2,self.ui.b3_r_2,
+                    self.ui.b4_l_1,self.ui.b4_r_1,self.ui.b4_l_2,self.ui.b4_r_2,
+                    self.ui.b5_l_1,self.ui.b5_r_1,self.ui.b5_l_2,self.ui.b5_r_2]
 
         # 队名与队徽输入
         self.ui.lEdtSur.textChanged.connect(self.team1id)
         self.ui.lEdtHun.textChanged.connect(self.team2id)
-        self.ui.team1logo.clicked.connect(self.team1pic)
-        self.ui.team2logo.clicked.connect(self.team2pic)
 
         # 切换本局
         self.ui.previous.clicked.connect(self.pre)
         self.ui.next.clicked.connect(self.nex)
+        self.ui.team1logo.clicked.connect(self.team1pic)
+        self.ui.team2logo.clicked.connect(self.team2pic)
 
     def team1id(self):
         self.ui.team1.setText(self.ui.lEdtSur.text())
@@ -407,7 +420,7 @@ class claWinBg:
         if self.inputfile2=='':
             pixblank = QPixmap()
             pixblank.load(resource_path('./pic/blank.png'))
-            pixblank = pixblank.scaled(self.ui.team1pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            pixblank = pixblank.scaled(self.ui.team2pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
             self.ui.team2pic.setPixmap(pixblank)
         else:
             pix = QPixmap()
@@ -438,7 +451,11 @@ class claWinBg:
             elif boall[i][0] < boall[i][1] and boall[i][0]+boall[i][1]>=8:
                 wdl1[2]+=1
                 wdl2[0]+=1
-        return[bo1,bo2,bo3,bo4,bo5,wdl1,wdl2]
+        self.pointData = [bo1,bo2,bo3,bo4,bo5,wdl1,wdl2]
+        try:
+            self.winPoint.updatePoint(self.pointData)
+        except AttributeError as e:
+            pass
 
     def updateMode(self):
         # BO3/5模式选择
@@ -446,8 +463,11 @@ class claWinBg:
             mode = 3
         elif self.ui.mode5.isChecked():
             mode = 5
-        return mode
-
+        try:
+            self.winPoint.switchBO3(mode)
+        except AttributeError as e:
+            pass
+        
     def pre(self):
         curpage = self.ui.stackedWidget.currentIndex()
         if curpage != 0:
@@ -595,26 +615,14 @@ class claWinBg:
         self.ui.team2.setText('')
         self.inputfile1=''
         self.inputfile2=''
-        self.ui.b1_l_1.setValue('0')
-        self.ui.b1_r_1.setValue('0')
-        self.ui.b2_l_1.setValue('0')
-        self.ui.b2_r_1.setValue('0')
-        self.ui.b3_l_1.setValue('0')
-        self.ui.b3_r_1.setValue('0')
-        self.ui.b4_l_1.setValue('0')
-        self.ui.b4_r_1.setValue('0')
-        self.ui.b5_l_1.setValue('0')
-        self.ui.b5_r_1.setValue('0')
-        self.ui.b1_l_2.setValue('0')
-        self.ui.b1_r_2.setValue('0')
-        self.ui.b2_l_2.setValue('0')
-        self.ui.b2_r_2.setValue('0')
-        self.ui.b3_l_2.setValue('0')
-        self.ui.b3_r_2.setValue('0')
-        self.ui.b4_l_2.setValue('0')
-        self.ui.b4_r_2.setValue('0')
-        self.ui.b5_l_2.setValue('0')
-        self.ui.b5_r_2.setValue('0')
+        pixblank = QPixmap()
+        pixblank.load(resource_path('./pic/blank.png'))
+        pixblank = pixblank.scaled(self.ui.team1pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.team1pic.setPixmap(pixblank)
+        pixblank = pixblank.scaled(self.ui.team2pic.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        self.ui.team2pic.setPixmap(pixblank)
+        for box in self.box:
+            box.setValue(0)
 
     def genPoint(self):
         self.winPoint = claPoint()
@@ -628,29 +636,11 @@ class claWinBg:
         self.ui.team2.textChanged.connect(self.winPoint.updateT2id)
 
         #切换bo3/5
-        self.ui.mode3.toggled.connect(self.winPoint.switchBO3(self.updateMode()))
+        self.ui.mode3.toggled.connect(self.updateMode)
         
         # 各场次小分
-        self.ui.b1_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b1_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b2_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b2_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b3_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b3_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b4_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b4_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b5_l_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b5_r_1.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b1_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b1_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b2_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b2_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b3_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b3_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b4_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b4_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b5_l_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
-        self.ui.b5_r_2.valueChanged.connect(self.winPoint.updatePoint(self.calPoint()))
+        for box in self.box:
+            box.valueChanged.connect(self.calPoint)
         
         self.winPoint.ui.show()
 
